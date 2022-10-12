@@ -1,5 +1,6 @@
 package com.sungyeh.mq.sender;
 
+import com.sungyeh.bean.DemoObject;
 import lombok.Setter;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class Sender {
     public void send(String msg) {
         System.out.println("Sender : " + msg);
         this.rabbitTemplate.convertAndSend("demo", msg);
+    }
+
+    public void send(DemoObject msg) {
+        System.out.println("Sender : " + msg);
+        this.rabbitTemplate.convertAndSend("demo2", msg);
     }
 
 }

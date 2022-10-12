@@ -16,4 +16,9 @@ public class RabbitConfig {
     public Queue demoChannel() {
         return new Queue("demo");
     }
+
+    @Bean
+    public Queue demo2Channel() {
+        return new Queue("demo2");
+    }
 }

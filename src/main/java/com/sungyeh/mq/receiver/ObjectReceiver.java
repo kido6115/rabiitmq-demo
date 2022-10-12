@@ -1,5 +1,6 @@
 package com.sungyeh.mq.receiver;
 
+import com.sungyeh.bean.DemoObject;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Component;
  * @author sungyeh
  */
 @Component
-@RabbitListener(queues = "demo")
-public class Receiver {
+@RabbitListener(queues = "demo2")
+public class ObjectReceiver {
 
     @RabbitHandler
-    public void process(String message) {
+    public void process(DemoObject message) {
         System.out.println("Receiver : " + message);
     }
 
