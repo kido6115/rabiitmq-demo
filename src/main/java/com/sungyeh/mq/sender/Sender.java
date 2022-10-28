@@ -24,8 +24,10 @@ public class Sender {
     }
 
     public void send(DemoObject msg) {
+
         System.out.println("Sender : " + msg);
         this.rabbitTemplate.convertAndSend("demo2", msg);
     }
+
 
 }

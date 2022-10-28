@@ -21,4 +21,10 @@ public class RabbitConfig {
     public Queue demo2Channel() {
         return new Queue("demo2");
     }
+
+    @Bean
+    public Queue authDelete() {
+        Queue queue = new Queue("auto", true, false, true);
+        return queue;
+    }
 }
