@@ -29,7 +29,7 @@ public class RabbitmqDemoApplication {
 
         RabbitAdmin rabbitAdmin = new RabbitAdmin(rabbitTemplate.getConnectionFactory());
         rabbitAdmin.declareQueue(q);
-        
+
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(rabbitTemplate.getConnectionFactory());
         //当前消费者数量
@@ -47,11 +47,11 @@ public class RabbitmqDemoApplication {
             String msg = new String(message.getBody());
             System.err.println("----------消费者: " + msg);
         });
-
+        System.out.println(rabbitAdmin.getQueueInfo("dynamic"));
         rabbitListenerEndpointRegistry.registerListenerContainer(endpoin, factory, true);
         rabbitListenerEndpointRegistry.unregisterListenerContainer("test").stop();
         System.out.println(rabbitListenerEndpointRegistry.getListenerContainerIds());
-
+        System.out.println(rabbitAdmin.getQueueInfo("dynamic"));
     }
 
     public static void main(String[] args) {
