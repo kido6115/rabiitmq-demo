@@ -1,8 +1,15 @@
 package com.sungyeh.bean;
 
-public class OutputMessage {
+import java.io.Serializable;
+
+public class OutputMessage implements Serializable {
+
+    private static final long serialVersionUID = 361495983377109328L;
     private String dateStr;
     private Message message;
+
+    public OutputMessage() {
+    }
 
     public OutputMessage(String dateStr, Message message) {
         this.dateStr = dateStr;
