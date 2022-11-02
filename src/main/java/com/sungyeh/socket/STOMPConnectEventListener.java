@@ -60,6 +60,9 @@ public class STOMPConnectEventListener implements ApplicationListener<SessionCon
         rabbitAdmin.declareQueue(q);
         rabbitAdmin.declareQueue(q2);
 
+        this.rabbitTemplate.convertAndSend(user + "-ccs", "安安");
+        this.rabbitTemplate.convertAndSend(user + "-ccs", "出事了");
+
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(rabbitTemplate.getConnectionFactory());
         //当前消费者数量
