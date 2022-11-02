@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/sockjs-0.3.4.js"></script>
-    <script src="/stomp.js"></script>
+    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
     <script type="text/javascript">
         var stompClient = null;
         var userName = null;
@@ -27,7 +27,7 @@
             userName = document.getElementById('from').value;
             stompClient.connect({user: userName}, function (frame) {
                 setConnected(true);
-                console.log('Connected: ' + frame);
+                console.log('Connected: ' + frame.headers['user-name']);
 
                 // 廣播
                 stompClient.subscribe('/topic/messages', function (messageOutput) {
@@ -35,7 +35,7 @@
                 });
 
                 // 私人
-                stompClient.subscribe('/user/a/subscribe', function (messageOutput) {
+                stompClient.subscribe('/user/' + frame.headers['user-name'] + '/subscribe', function (messageOutput) {
                     showMessageOutput(JSON.parse(messageOutput.body));
                 });
 
